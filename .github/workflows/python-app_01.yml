@@ -31,50 +31,50 @@ jobs:
       run: |
         poetry install --no-root   
   lint:
-      runs-on: ubuntu-latest
-               
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./example-app
-    - name: Lint
-      concurrency:
-          group: grupa
+    steps:
+      - name: Lint
+    concurrency:
+      group: grupa
       needs: build
       run: |
-        poetry run task lint
+          poetry run task lint
   formatter:
       runs-on: ubuntu-latest
-               
-    defaults:
+      defaults:
       run:
         working-directory: ./example-app
-    - name: Formatter
+      steps:
+        - name: Formatter
       concurrency:
         group: grupa
         needs: build
-      run: |
-        poetry run task formatter
+        run: |
+          poetry run task formatter
   security:
       runs-on: ubuntu-latest
-               
-    defaults:
+      defaults:
       run:
         working-directory: ./example-app
-    - name: Security
-      concurrency:
+      steps:
+      - name: Security
+        concurrency:
         group: grupa
-      needs: build
-      run: |
-        poetry run task security
+        needs: build
+        run: |
+          poetry run task security
   test:
       runs-on: ubuntu-latest
-               
-    defaults:
+      defaults:
       run:
         working-directory: ./example-app
-    - name: Test
-      needs: [Lint, Formatter, Security]
-      run: |
-        poetry run task test
+      steps:
+      - name: Test
+        needs: [lint, formatter, security]
+        run: |
+          poetry run task test
         
     
