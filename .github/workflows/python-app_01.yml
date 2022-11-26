@@ -41,7 +41,7 @@ jobs:
     - name: Formatter
       concurrency:
         group: grupa
-      needs: build
+        needs: build
       run: |
         poetry run task formatter
   security:
@@ -53,7 +53,7 @@ jobs:
         poetry run task security
   test:
     - name: Test
-      needs: Lint, Formatter, Security
+      needs: [Lint, Formatter, Security]
       run: |
         poetry run task test
         
