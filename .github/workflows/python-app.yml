@@ -32,33 +32,33 @@ jobs:
         poetry install --no-root
   poetry-lint:
     runs-on: ubntu-latest
-    defaults:
-      run:
-        working-directory: ./example-app
+#    defaults:
+#      run:
+#        working-directory: ./example-app
     steps:
     - name: lint
       run: poetry run task lint
   poetry-formater:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./example-app
+#    defaults:
+#      run:
+#        working-directory: ./example-app
     steps:
     - name: formatter
       run: poetry run task formatter
   poetry-security:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./example-app
+#    defaults:
+#      run:
+#        working-directory: ./example-app
     steps:
     - name: security
       run: poetry run task security
   poetry-test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: ./example-app
+#    defaults:
+#      run:
+#        working-directory: ./example-app
     steps:
     - name: security
       run: poetry run task test
