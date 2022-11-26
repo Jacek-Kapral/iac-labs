@@ -31,30 +31,30 @@ jobs:
       run: |
         poetry install --no-root
   lint:
-    - name: Lint
-      concurrency:
-      group: grupa
-      needs: build
-      run: |
-        poetry run task lint
+  - name: Lint
+    concurrency:
+        group: grupa
+    needs: build
+    run: |
+      poetry run task lint
   formatter:
-    - name: Formatter
-      concurrency:
+  - name: Formatter
+    concurrency:
       group: grupa
-      needs: build
-      run: |
-        poetry run task formatter
+    needs: build
+    run: |
+      poetry run task formatter
   security:
-    - name: Security
-      concurrency:
+  - name: Security
+    concurrency:
       group: grupa
-      needs: build
-      run: |
-        poetry run task security
+    needs: build
+    run: |
+      poetry run task security
   test:
-     - name: Test
-       needs: Lint, Formatter, Security
-       run: |
-         poetry run task test
+  - name: Test
+    needs: Lint, Formatter, Security
+    run: |
+       poetry run task test
         
     
