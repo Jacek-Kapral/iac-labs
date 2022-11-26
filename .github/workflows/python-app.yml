@@ -34,7 +34,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: /example-app
+        working-directory: ./example-app
     steps:
     - name: lint
       run: poetry run task lint
@@ -42,7 +42,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: /example-app
+        working-directory: ./example-app
     steps:
     - name: formatter
       run: poetry run task formatter
@@ -50,7 +50,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: /example-app
+        working-directory: ./example-app
     steps:
     - name: security
       run: poetry run task security
@@ -58,7 +58,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: /example-app
+        working-directory: ./example-app
     steps:
     - name: security
       run: poetry run task test
