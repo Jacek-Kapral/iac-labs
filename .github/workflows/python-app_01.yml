@@ -14,12 +14,11 @@ permissions:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
+               
     defaults:
       run:
         working-directory: ./example-app
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
@@ -28,15 +27,34 @@ jobs:
         python-version: "3.10"
     - name: Install Poetry Action
       uses: snok/install-poetry@v1.3.3
-
     - name: Install dependencies
       run: |
         poetry install --no-root
-    - name: Lint with lint
+  lint:
+    - name: Lint
+      concurrency:
+      group: grupa
+      needs: build
       run: |
         poetry run task lint
-    - name: Test with formatter, security, test
+  formatter:
+    - name: Formatter
+      concurrency:
+      group: grupa
+      needs: build
       run: |
         poetry run task formatter
-        poetry run task security 
-        poetry run task test
+  security:
+    - name: Security
+      concurrency:
+      group: grupa
+      needs: build
+      run: |
+        poetry run task security
+  test:
+     - name: Test
+       needs: Lint, Formatter, Security
+       run: |
+         poetry run task test
+        
+    
