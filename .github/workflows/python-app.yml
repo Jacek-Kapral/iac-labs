@@ -34,6 +34,6 @@ jobs:
     - name: Poetry runy
       run: |
         poetry run task lint
-        poetry run formatter
-        poetry run security
-        poetry run test
+        poetry run task formatter
+        poetry run task security
+        poetry run task test
