@@ -32,9 +32,9 @@ jobs:
         poetry install --no-root
   poetry-lint:
     runs-on: ubuntu-latest
-#    defaults:
-#      run:
-#        working-directory: ./example-app
+    defaults:
+      run:
+        working-directory: ./example-app
     steps:
     - name: lint
       run: poetry run task lint
