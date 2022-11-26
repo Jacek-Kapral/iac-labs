@@ -32,10 +32,10 @@ jobs:
     - name: Install dependencies
       run: |
         poetry install --no-root
-    - name: Lint with flake8
+    - name: Lint with lint
       run: |
         poetry run task lint
-    - name: Test with pytest
+    - name: Test with formatter, security, test
       run: |
         poetry run task formatter
         poetry run task security 
