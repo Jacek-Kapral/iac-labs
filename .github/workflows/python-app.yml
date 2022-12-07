@@ -34,6 +34,7 @@ jobs:
       run:
         working-directory: ./example-app/
     steps:
+    - uses: actions/checkout@v3
     - name: lint
       run: poetry run task lint
   poetry-formater:
