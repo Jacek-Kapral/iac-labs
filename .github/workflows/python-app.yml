@@ -18,7 +18,7 @@ jobs:
                
     defaults:
       run:
-        working-directory: /home/runner/work/iac-labs/example-app/
+        working-directory: ./example-app/
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
@@ -32,8 +32,7 @@ jobs:
     needs: build
     defaults:
       run:
-        ls -la
-        working-directory: /home/runner/work/iac-labs/example-app/
+        working-directory: ./example-app/
     steps:
     - name: lint
       run: poetry run task lint
@@ -42,7 +41,7 @@ jobs:
     needs: build
     defaults:
       run:
-        working-directory: /home/runner/work/iac-labs/example-app/
+        working-directory: ./example-app/
     steps:
     - uses: actions/checkout@v3
     - name: formatter
@@ -52,7 +51,7 @@ jobs:
     needs: build
     defaults:
       run:
-        working-directory: /home/runner/work/iac-labs/example-app/
+        working-directory: ./example-app/
     steps:
     - uses: actions/checkout@v3
     - name: security
@@ -62,7 +61,7 @@ jobs:
     needs: build
     defaults:
       run:
-        working-directory: /home/runner/work/iac-labs/example-app/
+        working-directory: ./example-app/
     steps:
     - uses: actions/checkout@v3
     - name: security
