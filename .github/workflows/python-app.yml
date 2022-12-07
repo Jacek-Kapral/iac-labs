@@ -43,6 +43,7 @@ jobs:
       run:
         working-directory: ./example-app
     steps:
+    - uses: actions/checkout@v3
     - name: formatter
       run: poetry run task formatter
   poetry-security:
@@ -52,6 +53,7 @@ jobs:
       run:
         working-directory: ./example-app
     steps:
+    - uses: actions/checkout@v3
     - name: security
       run: poetry run task security
   poetry-test:
@@ -61,6 +63,7 @@ jobs:
       run:
         working-directory: ./example-app
     steps:
+    - uses: actions/checkout@v3
     - name: security
       run: poetry run task test
       
