@@ -32,6 +32,7 @@ jobs:
     needs: build
     defaults:
       run:
+        ls -la
         working-directory: /home/runner/work/iac-labs/example-app/
     steps:
     - name: lint
