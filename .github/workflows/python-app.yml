@@ -128,9 +128,9 @@ jobs:
     defaults:
       run:
         working-directory: ./example-app/
-    needs: build
+    needs: [poetry-lint, poetry-formatter, poetry-security]
     concurrency:
-      group: work
+      group: tests
     steps:
     - uses: actions/checkout@v3
     - name: Set up Python 3.10
