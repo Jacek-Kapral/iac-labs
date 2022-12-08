@@ -13,9 +13,9 @@ permissions:
   contents: read
 
 jobs:
+
   build:
     runs-on: ubuntu-latest
-               
     defaults:
       run:
         working-directory: ./example-app/
@@ -40,7 +40,8 @@ jobs:
       with:
         path: /home/runner/work/iac-labs/iac-labs/example-app/.venv
         key: ${{ runner.os }}-venv
-  poetry-lint:
+        
+  lint:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -67,7 +68,8 @@ jobs:
         key: ${{ runner.os }}-venv
     - run: |
         source $VENV poetry run task lint
-  poetry-formatter:
+        
+  formatter:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -95,7 +97,7 @@ jobs:
     - run: |
         source $VENV poetry run task formatter
   
-  poetry-security:
+  security:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -123,12 +125,12 @@ jobs:
     - run: |
         source $VENV poetry run task security
  
-  poetry-test:
+  test:
     runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ./example-app/
-    needs: [poetry-lint, poetry-formatter, poetry-security]
+    needs: [lint, formatter, security]
     concurrency:
       group: tests
     steps:
